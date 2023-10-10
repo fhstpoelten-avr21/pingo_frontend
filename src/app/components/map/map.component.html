@@ -1,0 +1,78 @@
+<div class="leaflet-map" id="{{mapId}}">
+
+	<ion-fab *ngIf="!isPreview" vertical="top" horizontal="end">
+		<ion-fab-button matTooltip="Info about the action" (click)="centerMap()">
+			<ion-spinner *ngIf="!currentPosition; else elseLocate" name="crescent"></ion-spinner>
+			<ng-template #elseLocate> 
+				<ion-icon name="locate"></ion-icon>
+			</ng-template>
+		</ion-fab-button>
+	</ion-fab>
+</div>
+<ion-modal id="popupModal" #popupModal>
+	<div *ngIf="popupContent">
+
+		<div class="wrapper">
+			<div class="headerWrapper">
+				<h1>{{popupContent.title}}</h1>
+				<ion-button (click)="closePopupModal()" class="closeButton" fill="clear" slot="end">
+					<ion-icon name="close"></ion-icon>
+				</ion-button>
+			</div>
+			<div class="popupContentWrapper">
+				<p>{{popupContent.descr}}</p>
+				<ng-container *ngIf="popupContent.rank >= schnitzelLevel">
+					<div class="questionWrapper" *ngIf="popupContent.question">
+						<p class="question">{{popupContent.question}}</p>
+						<ion-input [(ngModel)]="popupAnswer" placeholder="Gib deine Antwort ein"></ion-input>
+						<p>{{questionFeedback}}</p>
+						<ion-button *ngIf="showSubmitButton" expand="block" (click)="submitAnswer(popupContent.answer)">
+							Antwort
+							absenden</ion-button>
+					</div>
+				</ng-container>
+			</div>
+
+			<div class="popupSchnitzelWrapper">
+			<ng-container *ngIf="popupContent.rank < schnitzelLevel && pingo?.isSnitzel">
+				<div class="popupContentWrapper">
+					<p>Diese Frage wurde bereits beantwortet. Auf gehts zum nächsten Pingo!</p>
+				</div>
+			</ng-container>
+		</div>
+		<div class="popupCommentWrapper">
+			<ion-label *ngIf="!isAuthenticated && this.popupContent.chat" class="ion-text-wrap" slot="start">
+				<ion-button href="/login" expand="block">Logge dich ein um Kommentare zu sehen</ion-button>
+			</ion-label>
+			<ion-label *ngIf="isAuthenticated && !joinedStationChat && this.popupContent.chat" class="ion-text-wrap" slot="start">
+				<ion-button (click)="joinStationChat(this.popupContent.id)" expand="block">Kommentare ansehen</ion-button>
+			</ion-label>
+
+			
+				</div>	
+		</div>
+	</div>
+
+</ion-modal>
+
+<ion-modal id="popupModal" #popupComments>
+	<div *ngIf="popupContent">
+	<div class="wrapper2">
+	<div class="headerWrapper">
+			<h1>{{popupContent.title}} - Kommentare</h1>
+			<ion-button (click)="leaveStationChat(this.popupContent.id)" class="closeButton" fill="clear" slot="end">
+				<ion-icon name="close"></ion-icon>
+			</ion-button>
+		</div>
+
+		<div class="commentsWrapper">
+
+		<app-chat *ngIf="joinedStationChat" [roomId]="popupContent.id" [station]="true"></app-chat>
+
+		</div>
+
+		</div>
+	</div>
+
+</ion-modal>
+

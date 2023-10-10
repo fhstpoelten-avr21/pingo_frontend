@@ -1,0 +1,31 @@
+version: "3.5"
+services:
+  pingoFE:
+    container_name: pingo
+    image: pingo:1.0.3
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.pingoFE.entrypoints=web-secure"
+      - "traefik.http.routers.pingoFE.rule=Host(`pingo.mobile.media.fhstp.ac.at`)"
+      - "traefik.http.routers.pingoFE.tls=true"
+      - "traefik.http.routers.pingoFE.tls.certresolver=letsencrypt"
+      - "traefik.http.services.pingoFE.loadbalancer.server.port=8100"
+      - "traefik.docker.network=mkl_external"
+    restart: unless-stopped
+    networks:
+      - mkl2023_external
+      - mkl_external
+    expose:
+      - 8100
+    command: "ionic serve"
+
+
+    
+networks:
+  mkl2023_external:
+    external: true
+  mkl_external:
+    external: true

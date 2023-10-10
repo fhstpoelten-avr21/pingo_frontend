@@ -1,0 +1,16 @@
+.multi-col-row {
+    ion-col {
+        margin-right: 10px;
+
+        &:last-child {
+            margin: 0;
+        }
+    }
+}
+
+.required_field{
+    &::before{
+        content: "* ";
+        color: var(--ion-color-danger);
+    }
+}

@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-button slot="start" fill="clear" (click)="cancel()">
+      Abbrechen
+    </ion-button>
+    <ion-button slot="end" fill="clear" (click)="submit()">
+      Fertig
+    </ion-button>
+    <ion-title>Link erstellen</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-grid class="ion-padding">
+  <ion-row>
+    <ion-col class="expire-title">
+      <ion-label>Gültigkeit</ion-label>
+    </ion-col>
+    <ion-col class="selection-container">
+      <ion-select interface="popover" value="1" (ionChange)="selectDays($event)">
+        <ion-select-option aria-label="1 Tag" value="1">1 Tag</ion-select-option>
+        <ion-select-option aria-label="2 Tage" value="3">3 Tage</ion-select-option>
+        <ion-select-option aria-label="7 Tage" value="7">1 Woche</ion-select-option>
+      </ion-select>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <ion-label>Berechtigung</ion-label>
+    </ion-col>
+  </ion-row>
+  <ion-row class="role-container">
+    <ion-radio-group value="viewer" (ionChange)="setRole($event)">
+      <ion-item lines="none">
+        <ion-radio labelPlacement="end" slot="start" aria-label="Editor" value="editor">Editor</ion-radio>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-radio labelPlacement="end" slot="start" aria-label="Teilnehmer:in" value="viewer">Teilnehmer:in</ion-radio>
+      </ion-item>
+    </ion-radio-group>
+  </ion-row>
+</ion-grid>

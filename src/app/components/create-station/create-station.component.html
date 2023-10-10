@@ -1,0 +1,56 @@
+<ion-header class="modal-header">
+  <ion-toolbar>
+    <ion-button slot="start" fill="clear" (click)="cancel()">
+      <ion-icon icon-only name="arrow-back-outline"></ion-icon>
+    </ion-button>
+    <ion-button slot="end" fill="clear" (click)="submitForm()">
+      Speichern
+    </ion-button>
+    <ion-title>{{stationName}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+  <div class="form-container">
+    <form [formGroup]="stationForm" (ngSubmit)="submitForm()" novalidate>
+      <ion-item>
+        <ion-input class="required-field" label="Name" labelPlacement="fixed" formControlName="name"
+          placeholder="Name der Station" required></ion-input>
+      </ion-item>
+      <app-form-validation [control]="stationForm.get('name')"></app-form-validation>
+      <ion-item>
+        <ion-textarea
+                maxlength="200"
+                label="Beschreibung"
+                placeholder="Beschreibung der Station"
+                labelPlacement="fixed"
+                formControlName="descr">
+        </ion-textarea>
+      </ion-item>
+      <ion-item>
+        <ion-label slot="start">Chat</ion-label>
+        <ion-toggle label="Chat" slot="start" formControlName="chat"></ion-toggle>
+      </ion-item>
+      <ion-item>
+        <ion-input label="Frage" labelPlacement="fixed" formControlName="question"
+        placeholder="Frage zum Abschließen"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input label="Anwort" labelPlacement="fixed" formControlName="secret"
+        placeholder="Antwort auf die Frage"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input class="required-field" type="number" label="Latitude" labelPlacement="fixed" formControlName="lat"
+        placeholder="Latitude" required></ion-input>
+      </ion-item>
+      <app-form-validation [control]="stationForm.get('lat')"></app-form-validation>
+      <ion-item>
+        <ion-input class="required-field" type="number" label="Longitude" labelPlacement="fixed" formControlName="lng"
+        placeholder="Longitude" required></ion-input>
+      </ion-item>
+      <app-form-validation [control]="stationForm.get('lng')"></app-form-validation>
+    </form>
+  </div>
+  <div class="map-container">
+    <app-map [isPreview]="true" [mapId]="'draggableMap1'" (newPos)="getNewPos($event)"></app-map>
+  </div>
+</ion-content>

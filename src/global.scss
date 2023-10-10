@@ -1,0 +1,158 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+@use "./theme/custom_variables" as *;
+/* Core CSS required for Ionic components to work properly */
+@import "@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "@ionic/angular/css/normalize.css";
+@import "@ionic/angular/css/structure.css";
+@import "@ionic/angular/css/typography.css";
+@import '@ionic/angular/css/display.css';
+
+/* Optional CSS utils that can be commented out */
+@import "@ionic/angular/css/padding.css";
+@import "@ionic/angular/css/float-elements.css";
+@import "@ionic/angular/css/text-alignment.css";
+@import "@ionic/angular/css/text-transformation.css";
+@import "@ionic/angular/css/flex-utils.css";
+
+@import "~leaflet/dist/leaflet.css";
+@import "~leaflet.markercluster/dist/MarkerCluster.css";
+@import "./theme/markercluster-custom.scss";
+
+/* Add Tailwind */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+ion-icon {
+  color: var(--ion-text-color);
+}
+
+.tab-selected {
+  background-color: var(--ion-color-primary);
+
+
+  @font-face {
+    font-family: "Meta Pro Bold";
+    src: url("../src/assets/fonts/FFMetaProBold.TTF");
+  }
+
+  @font-face {
+    font-family: "Meta Pro Regular";
+    src: url("../src/assets/fonts/FFMetaProRegular.TTF");
+  }
+
+  :root {
+    --ion-font-family: "Meta Pro Regular";
+  }
+
+}
+
+ion-modal.new-station-modal, ion-modal.create-pingo-modal {
+
+  .modal-header {
+    ion-button {
+      font-size: .8em !important;
+    }
+  }
+
+}
+
+ion-modal.create-pingo-modal{
+  --width: 100%;
+  --height: 100%;
+}
+
+ion-modal.share-link-modal {
+  --height: auto;
+  --border-radius: 5px;
+}
+
+ion-radio::part(container) {
+  width: 25px;
+  height: 25px;
+
+  border-radius: 8px;
+  border: 2px solid #ddd;
+}
+
+ion-radio::part(mark) {
+  background: none;
+  transition: none;
+  transform: none;
+  border-radius: 0;
+}
+
+ion-radio.radio-checked::part(container) {
+  background: #6815ec;
+  border-color: transparent;
+}
+
+ion-radio.radio-checked::part(mark) {
+  width: 6px;
+  height: 10px;
+
+  border-width: 0px 2px 2px 0px;
+  border-style: solid;
+  border-color: #fff;
+
+  transform: rotate(45deg);
+}
+
+.required-field {
+
+  &::before {
+    content: '* ';
+    color: red;
+    margin-top: 10px;
+    top: 5px;
+    left: 0px;
+    position: absolute;
+  }
+}
+
+form {
+
+  ion-input[label],
+  ion-label {
+    padding-left: 10px !important;
+  }
+}
+
+ion-accordion-group{
+  ion-accordion {
+      .ion-accordion-toggle-icon {
+          color: black;
+      }
+  }
+}
+
+.overflow-auto {
+  overflow: auto;
+}
+
+.overflow-scroll {
+  overflow: scroll;
+}
+
+  /* Joyride introduction tour */
+.joyride-button {
+  border-radius: 8px;
+  color: white !important;
+  background-color: var(--ion-color-secondary) !important;
+}
+
+.joyride-step__container {
+  border-radius: 8px;
+}

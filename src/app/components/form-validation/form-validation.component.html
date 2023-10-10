@@ -1,0 +1,7 @@
+<div class="error-container" *ngIf="control && control.errors">
+  <ng-container *ngFor="let error of getErrors()">
+    <ion-label class="ion-padding" *ngIf="error !== 'true'" color="danger">
+      {{ error }}
+    </ion-label>
+  </ng-container>
+</div>

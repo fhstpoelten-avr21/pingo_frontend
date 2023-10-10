@@ -1,0 +1,27 @@
+ion-grid{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 370px;
+    min-width: 200px;
+    align-items: center;
+
+    ion-row{
+        display: flex;
+        flex-direction: row;
+        justify-content: start;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+
+    .expire-title{
+        display: flex;
+        align-items: center;
+        padding: 0;
+    }
+
+    .selection-container{
+        margin-left: 10px;
+    }
+
+}

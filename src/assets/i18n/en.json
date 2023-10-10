@@ -1,0 +1,108 @@
+{
+  "done": "Done",
+  "mode": "Mode",
+  "refresh": "Refresh",
+  "refresh_text": "Swipe down to refresh",
+  "homepage": "Homepage",
+  "skip": "Skip",
+  "register": "Register",
+  "delete": "delete",
+  "collection": "Collection",
+  "stations": "Stations",
+  "public": "public",
+  "login": "Login",
+  "navigation": "Navigation",
+  "visibility": "Visibility",
+  "description": "Description",
+  "password": "Password",
+  "confirm_password": "Confirm password",
+  "lastname": "Lastname",
+  "firstname": "Firstname",
+  "email": "Email",
+  "username": "Username",
+  "treasure_hunt": "Treasure Hunt",
+  "qr": "QR Code",
+  "ready": "Ready",
+  "load_pingos": "Load Pingos",
+  "no_pingos_found_headline": "Nothing found at your location",
+  "no_pingos_found_text": "Does your region have special places that you would like to share with others? Just log in and share.",
+  "no_account": "No account yet?",
+  "account_exists": "You already have an account?",
+  "register_now": "Register now",
+  "authorization": "Authorization",
+  "edit": "Edit",
+  "types": "Types",
+  "discover": "discover",
+  "home": {
+    "offline": "Offline Mode",
+    "offline_text": "Bad connection. Please try again or establish a better internet connection.",
+    "no_gps_title": "GPS deactivated",
+    "no_gps_text": "Please allow access to your location to find Pingos near you. Pull down to refresh...",
+    "pingos_near_you": "Pingos near you",
+    "info": {
+      "collection": "Collection",
+      "collection_text_1": "All highlights at a glance!",
+      "collection_text_2": "All stations are displayed at once. There is no specific route provided.",
+      "treasure_hunt": "Treasure Hunt",
+      "treasure_hunt_text_1": "Exciting adventure journey",
+      "treasure_hunt_text_2": "The next station is revealed only after answering a quiz question at the current station."
+    }
+  },
+  "profile": {
+    "title": "Profil",
+    "no_pingos": "You don't have any pingos yet",
+    "no_stations": "You are not assigned to any stations"
+  },
+  "validation": {
+    "default": "This field must be filled out correctly.",
+    "required": "This field is required.",
+    "minlength": "The minimum length is {validationRequirement} characters.",
+    "max": "The maximum is {validationRequirement} characters.",
+    "min": "The minimum is {validationRequirement} characters.",
+    "pattern": "The entered email must be valid.",
+    "user_exists": "Username already exists.",
+    "password_mismatch": "The passwords do not match."
+  },
+  "or": "or",
+  "tab1": {
+    "tabName": "Overview",
+    "invite": "{{lang}}"
+  },
+  "create": {
+    "valid": "Please make sure that your Pingo is complete and valid!",
+    "overview": {
+      "title": "Overview"
+    },
+    "stations": {
+      "title": "Stations",
+      "no_stations": "No stations added"
+    },
+    "members": {
+      "title": "Members",
+      "no_members": "No members added"
+    }
+  },
+  "tour": {
+    "title": "Tutorial",
+    "welcome": "Welcome",
+    "welcome_text_1": "Nice that you're here!",
+    "welcome_text_2": "With this app you can design exciting tours of all kinds. We'll show you how here.",
+    "description": "With this app you can A PinGo is a collection of locations that are related in terms of content. For example, create a travel guide with a <b>collection</b> of city highlights. <br><br> Or design a <b>scavenger hunt</b> through nature for your friends. Design exciting tours of all kinds. We'll show you how here.",
+    "navigation_text": "On the <b>Homepage</b> you can see all currently available PinGos in your area.<br><br> In the <b>Profile</b> at the top right, you can create an account. Then it's yours possible to create your own PinGos.",
+    "stations_text": "A PinGo consists of several locations. You can add new <b>Stations</b> at any time.<br><br> You can either create a location by entering coordinates directly, or you can move the <b>PIN</b> directly on the map < b>with your finger</b>.",
+    "visibility_text": "Set the visibility to <b>private</b> and then <b>share</b> your PinGo via a <b>link</b>, <b>QR code</b> or directly with a user .<br><br> Or you can set the visibility to <b>public</b> and share your tours with the whole world!",
+    "treasure_hunt": "In a treasure hunt, the <b>order</b> of the stations is important. You can arrange them using drag and drop.<br><br> Then you can think of another <b>question</b>. The station will then only become visible once the correct <b>answer</b> is entered.",
+    "creativity_text": "Your creativity has no limits. <br>Let's go!",
+    "start_tour": "Start Tour",
+    "lets_go_text": " <b>PIN</b>&nbsp;setzen&nbsp;und&nbsp;<b>GO</b>",
+    "step_1": "Here you can access all important functions.",
+    "step_2": "By clicking on the logo, you can see all PinGos near you.",
+    "step_welcome": "With a click, you can return to the introduction.",
+    "step_qr": "Open an existing PinGo by scanning a QR code.",
+    "step_profile_create": "Here, you can create and manage your own PinGos at any time.",
+    "step_profile": "Manage your profile data here."
+  },
+  "chat": {
+    "no_messages": "No messages"
+  }
+}

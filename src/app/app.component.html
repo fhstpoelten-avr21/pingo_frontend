@@ -1,0 +1,33 @@
+<ion-app>
+  <ion-header joyrideStep="firstStep" title="Navigation" text="{{ 'tour.step_1' | translate }}" [translucent]="true" class="ion-no-border">
+    <ion-toolbar>
+      <ion-button joyrideStep="secondStep" title="{{ 'homepage' | translate }}" text="{{ 'tour.step_2' | translate }}" fill="clear" href="/home">
+        <ion-img src="assets/icon/logo-pingo.png" class="logo"></ion-img>
+      </ion-button>
+      <ion-buttons slot="end">
+        <ion-button href="/welcome"  joyrideStep="thirdStep" title="{{ 'tour.title' | translate }}" text="{{ 'tour.step_welcome' | translate }}">
+          <ion-icon slot="icon-only" color="secondary-contrast" name="help-circle-outline"></ion-icon>
+        </ion-button>
+        <ion-button href="/qr-scan"  joyrideStep="forthStep" title="{{ 'qr' | translate }}" text="{{ 'tour.step_qr' | translate }}">
+          <ion-icon slot="icon-only" color="primary" icon="qr-code-outline"></ion-icon>
+        </ion-button>
+        <ion-button href="/profile"  joyrideStep="fithStep" title="{{ 'profile.title' | translate }}" text="{{ 'tour.step_profile_create' | translate }}">
+          <ion-icon slot="icon-only" color="primary" icon="person"></ion-icon>
+        </ion-button>
+        <ion-button *ngIf="isAuthenticated" href="/profile-update"  joyrideStep="sixthStep" title="{{ 'edit' | translate }}" text="{{ 'tour.step_profile' | translate }}" >
+          <ion-icon slot="icon-only" color="primary" icon="settings-outline"></ion-icon>
+        </ion-button>
+        <ion-select [style]="{ color: 'black', backgroundColor: 'none', padding: '0 8px 0 8px' }" [(ngModel)]="selectedLanguage" (ionChange)='languageChange()' [placeholder]='"EN"'>
+          <ion-select-option value='de'>DE</ion-select-option>
+          <ion-select-option value='en'>EN</ion-select-option>
+        </ion-select>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    <ion-router-outlet></ion-router-outlet>
+  </ion-content>
+
+
+</ion-app>

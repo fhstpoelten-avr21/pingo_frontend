@@ -1,0 +1,57 @@
+<ion-content class="ion-padding">
+
+    <ion-loading *ngIf="isLoading" [isOpen]="true" message="{{ 'load_pingos' | translate }}"></ion-loading>
+
+    <ng-container *ngIf="pingoList">
+        <ion-card class="ion-padding">
+            <ion-card-header>
+                <ion-card-title style="position: relative;">
+                    Pingos
+                    <ion-fab-button style="position: absolute;right:0px;top: -10px;" (click)="createNewPingo()">
+                        <ion-icon name="add" color="light"></ion-icon>
+                    </ion-fab-button>
+                </ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+                <h3 *ngIf="!pingoList.length">{{ 'profile.no_pingos' | translate }}</h3>
+            </ion-card-content>
+            <ion-list *ngIf="pingoList.length">
+                <ion-item-sliding *ngFor="let pingo of pingoList; let i = index">
+                    <ion-item (click)="handleChoosePingo(pingo)" lines="none">
+                        <!-- <ion-img style="width: 50px" slot="start" src="pingo?.media[0]?.url"></ion-img> -->
+                        <ion-icon class="plus-button" name="map-outline"></ion-icon>
+                        <ion-label>
+                            <h1>{{pingo.name}}</h1>
+                            <p>{{pingo.descr}}</p>
+                            <p>{{ 'authorization' | translate }}: {{getRole(pingo.userToPingos)}}</p>
+                        </ion-label>
+                    </ion-item>
+                    <ion-item-options>
+                        <ion-item-option (click)="deletePingo(pingo.id!)" color="danger">{{ 'delete' | translate }}</ion-item-option>
+                    </ion-item-options>
+                </ion-item-sliding>
+            </ion-list>
+        </ion-card>
+    </ng-container>
+
+    <ng-container *ngIf="stationList">
+        <ion-card class="ion-padding">
+            <ion-card-header>
+                <ion-card-title>{{ 'stations' | translate }}</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+                <h3 *ngIf="!stationList.length">{{ 'profile.no_stations' | translate }}</h3>
+                <ion-list *ngIf="stationList.length">
+                    <ion-item *ngFor="let station of stationList" (click)="editStation(station)">
+                        <ion-img slot="start" src="station?.media[0]?.url"></ion-img>
+                        <ion-label>
+                            <h1>{{station.name}}</h1>
+                            <p>{{station.descr}}</p>
+                        </ion-label>
+                    </ion-item>
+                </ion-list>
+            </ion-card-content>
+        </ion-card>
+    </ng-container>
+
+</ion-content>

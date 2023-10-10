@@ -1,0 +1,91 @@
+<ion-content [fullscreen]="true">
+    <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+        <ion-refresher-content pullingIcon="chevron-down-outline" pullingText="{{ 'refresh' | translate }}..."
+                               refreshingSpinner="circles" refreshingText="{{ 'refresh' | translate }}..."></ion-refresher-content>
+    </ion-refresher>
+    <div *ngIf="!geoAllowed">
+        <ion-card class="no-pingo-card" color="danger">
+            <h2>{{ 'home.no_gps_title' | translate }}</h2>
+            <p>{{ 'home.no_gps_text' | translate }}</p>
+        </ion-card>
+    </div>
+
+    <div *ngIf="couldNotLoadGeo">
+        <ion-card class="" color="danger">
+            <div class="flex flex-col p-2">
+                <h2><ion-icon name="locate-outline"></ion-icon>{{ 'home.offline' | translate }}</h2>
+                <p>{{ 'home.offline_text' | translate }}</p>
+            </div>
+        </ion-card>
+    </div>
+
+
+    <ion-card *ngIf="pingoList.length" class="pingoCard" color="primary">
+        <ion-label style="font-size: 1.5em; color: white">{{pingoList.length}} {{ 'home.pingos_near_you' | translate }}:</ion-label>
+    </ion-card>
+
+    <ion-loading *ngIf="isLoading" [isOpen]="true" message="{{ 'load_pingos' | translate }}"></ion-loading>
+    <ion-card class="no-pingo-card" *ngIf="!isLoading && !pingoList.length">
+        <h2>{{ 'no_pingos_found_headline' | translate }} <span class="emoji">🤷</span></h2>
+        <p>{{ 'no_pingos_found_text' | translate }}</p>
+    </ion-card>
+
+    <ion-accordion-group *ngIf="!isLoading && pingoList.length" class="accordion-grp-container"
+                         (ionChange)="accordionChange($event)">
+        <div *ngFor="let pingo of pingoList; let i = index" class="accordion-container" lines="none">
+            <ion-accordion [value]="pingo.id" class="custom-toggle-icon">
+
+                <ion-item slot="header">
+                    <ion-icon slot="start" name="location-outline" class="ion-accordion-icon"></ion-icon>
+                    <h2>{{ pingo.name }}</h2>
+                </ion-item>
+                <div [id]="pingo.id" class="accordion-content" slot="content">
+                    <div class="ion-padding pingo-infos">
+                        <div *ngIf="pingo.media[0]?.url">
+                            <img [src]="pingo.media[0].url" alt="Pingo Image" class="pingo-image">
+                        </div>
+                        <h3>Beschreibung:</h3>
+                        <p>{{ pingo.descr }}</p>
+                        <h3>Anzahl der Stationen:</h3>
+                        <p>{{pingo.stations.length}}</p>
+                        <h3 *ngIf="pingoSettings[i].isMapOpen" id="typeTooltip" class="pingo-type">Typ
+                            <ion-icon name="information-circle-outline"></ion-icon>
+                        </h3>
+                        <p>{{pingo.isSnitzel ? "Schnitzeljagd" : "Sammlung"}}</p>
+                        <ion-popover *ngIf="pingoSettings[i].isMapOpen" reference="trigger" arrow="true"
+                                     trigger="typeTooltip" triggerAction="click" dismiss="backdrop">
+                            <ng-template>
+                                <ion-header>
+                                    <h2>Pingo {{ 'types' | translate }}</h2>
+                                </ion-header>
+                                <ion-content>
+                                    <div class="contentWrapper">
+                                        <h3>{{ 'home.info.collection' | translate }}</h3>
+                                        <p>{{ 'home.info.collection_text_1' | translate }}!</p>
+                                        <p>{{ 'home.info.collection_text_2' | translate }}</p>
+                                        <h3>{{ 'home.info.treasure_hunt' | translate }}</h3>
+                                        <p>{{ 'home.info.treasure_hunt_text_1' | translate }}!</p>
+                                        <p>{{ 'home.info.treasure_hunt_text_2' | translate }}</p>
+
+                                    </div>
+                                </ion-content>
+                            </ng-template>
+                        </ion-popover>
+                    </div>
+
+                    <app-map [mapId]="'pingo-preview-map'" [pingo]="pingo" [isPreview]="true"
+                             *ngIf="pingoSettings[i].isMapOpen"></app-map>
+                    <ion-button color="secondary" class="btn-enter-pingo" expand="block"
+                                [routerLink]="['/pingo', pingo.id]">PINGO {{ 'discover' | translate }}!
+                    </ion-button>
+                </div>
+            </ion-accordion>
+        </div>
+    </ion-accordion-group>
+
+    <div class="image-container">
+        <img src="../../../assets/img/intro_2.gif">
+    </div>
+
+
+</ion-content>

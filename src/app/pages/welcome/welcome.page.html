@@ -1,0 +1,83 @@
+<ion-content [fullscreen]="true" class="fullscreen">
+    <swiper-container class="overflow-auto" pager="true" pagination="true">
+        <swiper-slide>
+            <div class="slide ion-text-center">
+                <img class="intro-img" src="./assets/img/hello.gif"/>
+                <h2>{{ 'tour.welcome' | translate }}</h2>
+                <p>
+                    {{ 'tour.welcome_text_1' | translate }}<br><br>
+                    {{ 'tour.welcome_text_2' | translate }}
+                </p>
+                <div class="mt-6 items-center text-center justify-center align-center flex flex-row">
+                    <ion-button (click)="startTour()" color="secondary">
+                        <ion-icon name="information-circle-outline" color="light" class="pr-2"></ion-icon>
+                        {{ 'tour.start_tour' | translate }}
+                    </ion-button>
+                    <ion-button routerLink="/home" color="secondary">
+                        {{ 'skip' | translate }}
+                        <ion-icon name="play-skip-forward-outline" color="light"></ion-icon>
+                    </ion-button>
+                </div>
+            </div>
+        </swiper-slide>
+
+        <swiper-slide>
+            <div class="slide ion-text-center">
+                <img class="intro-img" src="./assets/img/intro_1.gif"/>
+                <h2>PinGo</h2>
+                <p [innerHTML]="'tour.description' | translate "></p>
+            </div>
+        </swiper-slide>
+
+        <swiper-slide>
+            <div class="slide ion-text-center">
+                <img class="intro-img" src="./assets/img/intro_2.gif"/>
+                <h2>Navigation</h2>
+                <p [innerHTML]="'tour.navigation_text' | translate "></p>
+            </div>
+        </swiper-slide>
+
+        <swiper-slide>
+            <div class="slide ion-text-center">
+                <img class="intro-img" src="./assets/img/intro_3.gif"/>
+                <h2>{{ 'stations' | translate }}</h2>
+                <p [innerHTML]="'tour.navigation_text' | translate "></p>
+            </div>
+        </swiper-slide>
+
+        <swiper-slide>
+            <div class="slide ion-text-center">
+                <img class="intro-img" src="./assets/img/intro_4.gif"/>
+                <h2>{{ 'visibility' | translate }}</h2>
+                <p [innerHTML]="'tour.visibility_text' | translate "></p>
+            </div>
+        </swiper-slide>
+
+        <swiper-slide>
+            <div class="slide ion-text-center">
+                <img class="intro-img" src="./assets/img/intro_5.gif"/>
+                <h2>{{ 'treasure_hunt' | translate }}</h2>
+                <p [innerHTML]="'tour.treasure_hunt' | translate "></p>
+            </div>
+        </swiper-slide>
+
+        <swiper-slide>
+            <div class="slide ion-text-center">
+                <img class="intro-img" src="./assets/img/schnitzelhunt.gif"/>
+                <h2>{{ 'ready' | translate }}?</h2>
+                <p [innerHTML]="'tour.creativity_text' | translate "></p>
+                <div class="mt-6 items-center text-center justify-center align-center flex flex-col">
+                    <ion-button (click)="startTour()" color="secondary">
+                        <ion-icon name="information-circle-outline" color="light" class="pr-2"></ion-icon>
+                        {{ 'tour.start_tour' | translate }}
+                    </ion-button>
+                    {{ 'or' | translate }}
+                    <ion-button routerLink="/home" color="secondary">
+                        <p [innerHTML]="'tour.lets_go_text' | translate " style="color:white;"></p>
+                        <ion-icon slot="end" name="arrow-forward" color="light"></ion-icon>
+                    </ion-button>
+                </div>
+            </div>
+        </swiper-slide>
+    </swiper-container>
+</ion-content>

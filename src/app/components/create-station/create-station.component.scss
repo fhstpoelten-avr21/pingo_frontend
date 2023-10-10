@@ -1,0 +1,34 @@
+// app-map{
+//     max-height: 30%;
+// }
+
+ion-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+}
+
+.form-container {
+    height: 45%;
+    overflow: auto;
+}
+
+.map-container {
+    height: 55%;
+}
+
+app-map{
+    display: block;
+    height: 100%;
+    width: 100%;
+}
+
+form {
+    height: 100%;
+}
+
+ion-textarea{
+    max-height: 90px;
+    padding-left: 10px;
+}

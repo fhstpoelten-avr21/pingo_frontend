@@ -1,0 +1,72 @@
+<ion-content [fullscreen]="true" class="ion-padding" scroll-y="true">
+  <h2 class="ion-text-center ion-margin-top">{{isLogin ? 'Login' : 'register' | translate }}</h2>
+  <ng-container *ngIf="isLogin">
+    <form [formGroup]="loginForm" (ngSubmit)="submitLogin()" novalidate>
+      <ion-item class="ion-margin" lines="full">
+        <ion-input label="Username" labelPlacement="floating" formControlName="username" type="text" required></ion-input>
+      </ion-item>
+      <app-form-validation [control]="loginForm.controls['username']" submitted="isLoginSubmitted"></app-form-validation>
+      <ion-item class="ion-margin" lines="full">
+        <ion-input label="Passwort" labelPlacement="floating" formControlName="password" type="password" required></ion-input>
+      </ion-item>
+      <app-form-validation [control]="loginForm.controls['password']" submitted="isLoginSubmitted"></app-form-validation>
+      <ion-button class="submit_btn" type="submit" expand="full">Login</ion-button>
+    </form>
+  </ng-container>
+
+  <ng-container *ngIf="isLogin" class="ion-padding-top">
+    <div class="ion-padding-top ion-text-center ion-text-wrap">
+    <ion-label> {{ 'no_account' | translate }}</ion-label>
+    <ion-label (click)="isLogin = !isLogin" expand="block" color="primary">
+      {{ 'register_now' | translate }}
+    </ion-label>
+  </div>
+  </ng-container>
+  
+
+  <ng-container id="loginForm" *ngIf="!isLogin">
+    <form [formGroup]="registerForm" (ngSubmit)="submitRegister()" novalidate>
+      <ion-item class="ion-margin" lines="full">
+        <ion-input label="{{ 'username' | translate }}*" labelPlacement="floating" formControlName="username" type="text" required></ion-input>
+      </ion-item>
+      <app-form-validation [control]="registerForm.controls['username']"></app-form-validation>
+      <ion-item class="ion-margin" lines="full">
+        <ion-input label="{{ 'email' | translate }}* " labelPlacement="floating" formControlName="email" type="email" required></ion-input>
+      </ion-item>
+      <app-form-validation [control]="registerForm.controls['email']"></app-form-validation>
+      <ion-row class="ion-margin multi-col-row">
+        <ion-col class="ion-no-padding">
+          <ion-item lines="full">
+            <ion-input label="{{ 'firstname' | translate }}*" labelPlacement="floating" formControlName="firstname" type="text"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col class="ion-no-padding">
+          <ion-item lines="full">
+            <ion-input label="{{ 'lastname' | translate }}*" labelPlacement="floating" formControlName="lastname" type="text"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-item class="ion-margin" lines="full">
+        <ion-input label="{{ 'password' | translate }}*" labelPlacement="floating" formControlName="password" type="password" required></ion-input>
+      </ion-item>
+      <app-form-validation [control]="registerForm.controls['password']"></app-form-validation>
+      <ion-item class="ion-margin" lines="full">
+        <ion-input label="{{ 'confirm_password' | translate }}*" labelPlacement="floating" formControlName="confirmPassword" type="password" required></ion-input>
+      </ion-item>
+      <app-form-validation [control]="registerForm.controls['confirmPassword']"></app-form-validation>
+      <ion-button class="submit_btn" type="submit" expand="full"> {{ 'register' | translate }}</ion-button>
+    </form>
+  </ng-container>
+  <ng-container *ngIf="!isLogin" >
+    <div class="ion-padding-top ion-text-center">
+    <ion-label class="ion-text-center"> {{ 'account_exists' | translate }}</ion-label>
+    <ion-label (click)="isLogin = !isLogin" expand="block" color="primary" >
+      {{ 'login' | translate }}
+    </ion-label>
+  </div>
+  </ng-container>
+</ion-content>
+<ion-footer>
+  
+
+</ion-footer>

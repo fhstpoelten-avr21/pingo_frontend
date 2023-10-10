@@ -1,0 +1,113 @@
+
+/* Scrollbar styles */
+.inverted-scrollbar::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 7px;
+  height: 7px;
+}
+
+.inverted-scrollbar::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  background-color: rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, 0.5);
+}
+
+.inverted-scrollbar::-webkit-scrollbar-track {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Message input styles */
+.message-input {
+  bottom: 0;
+  z-index: 2000;
+  position: fixed;
+  background-color: var(--ion-color-light-tint);
+  width: 100%;
+  transition: bottom 0.3s ease;
+  border-top: 1px solid #ccc;
+}
+
+.message-input-station {
+  bottom: 0;
+  z-index: 2000;
+  position: fixed;
+  padding-right: 30px;
+  background-color: var(--ion-color-light-tint);
+  width: 100%;
+  transition: transform 0.3s ease;
+  border-top: 1px solid #ccc;
+}
+
+#messagesContainer {
+  margin-bottom: 300px; 
+}
+  ion-content {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 56px;
+    width:100%;
+    background-color: #fff;
+
+
+    ion-icon {
+      margin-left: 60px;
+
+      
+    }
+  }
+
+  .message-sender {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    
+    align-items: center;
+    background-color: #fff;
+   
+    ion-icon {
+      margin-right: 10px;
+    }
+}
+
+ion-item {
+  --background: #fff;
+  --border-color: #fff;
+  --color: #000;
+}
+
+.message-date {
+  font-size: 0.8rem;
+  color: #aaa;
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 10px;
+  align-items: center;
+
+  ion-icon {
+    margin-right: 5px;
+  }
+}
+
+.message-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 5px;
+  margin: 10px;
+  width: 100%;
+  word-wrap: break-word;
+  word-break: break-all;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+} 

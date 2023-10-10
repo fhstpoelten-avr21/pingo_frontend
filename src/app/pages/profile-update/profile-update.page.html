@@ -1,0 +1,48 @@
+<ion-content [fullscreen]="true" class="ion-padding" scroll-y="true">
+  <h2 class="ion-text-center ion-margin-top">Profildaten ändern</h2>
+
+  <form [formGroup]="updateProfileForm" (ngSubmit)="submitUpdate()" novalidate>
+    <ion-item class="ion-margin" lines="full">
+      <ion-input label="Username *" labelPlacement="floating" formControlName="username" type="text"
+        required></ion-input>
+    </ion-item>
+    <app-form-validation [control]="updateProfileForm.controls['username']"></app-form-validation>
+
+    <ion-item class="ion-margin" lines="full">
+      <ion-input label="Email * " labelPlacement="floating" formControlName="email" type="email" required></ion-input>
+    </ion-item>
+    <app-form-validation [control]="updateProfileForm.controls['email']"></app-form-validation>
+
+    <ion-row class="ion-margin multi-col-row">
+      <ion-col class="ion-no-padding">
+        <ion-item lines="full">
+          <ion-input label="Vorname *" labelPlacement="floating" formControlName="firstname" type="text"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col class="ion-no-padding">
+        <ion-item lines="full">
+          <ion-input label="Nachname *" labelPlacement="floating" formControlName="lastname" type="text"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-item class="ion-margin" lines="full">
+      <ion-input label="Passwort *" labelPlacement="floating" formControlName="password" type="password"
+        required></ion-input>
+    </ion-item>
+    <app-form-validation [control]="updateProfileForm.controls['password']"></app-form-validation>
+    <ion-item class="ion-margin" lines="full">
+      <ion-input label="Passwort bestätigen *" labelPlacement="floating" formControlName="confirmPassword"
+        type="password" required></ion-input>
+    </ion-item>
+    <app-form-validation [control]="updateProfileForm.controls['confirmPassword']"></app-form-validation>
+
+    <ion-button id="updateProfileBtn" class="submit_btn" type="submit" expand="full">Profildaten ändern</ion-button>
+  </form>
+
+  <ion-toast *ngIf="updateProfileForm.valid" trigger="updateProfileBtn" message="USER PROFILE UPDATED!"
+    [duration]="3000" color="primary" class="ion-text-center" position="bottom"></ion-toast>
+
+</ion-content>
+<ion-footer class="ion-padding">
+  <ion-button (click)="logout()" expand="full" color="danger">Logout</ion-button>
+</ion-footer>

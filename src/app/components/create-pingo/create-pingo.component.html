@@ -1,0 +1,198 @@
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<ion-header>
+  <ion-toolbar>
+    <ion-button slot="start" fill="clear" (click)="leavePage()">
+      <ion-icon name="arrow-back-outline"></ion-icon>
+    </ion-button>
+    <ion-button slot="end" fill="clear" (click)="submitFormAndLeave()">
+      {{ 'done' | translate }}
+    </ion-button>
+    <ion-title *ngIf="activeTab === 'general'">{{ 'create.overview.title' | translate }}</ion-title>
+    <ion-title *ngIf="activeTab === 'stations'">{{ 'create.stations.title' | translate }}</ion-title>
+    <ion-title *ngIf="activeTab === 'participants'">{{ 'create.members.title' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" scroll-y="false">
+  <div class="tab-content">
+    <form [formGroup]="newPingoForm" novalidate>
+      <!--------------  ### GENERAL TAB ### ------------->
+      <ng-container *ngIf="activeTab === 'general'">
+        <div class="general-tab-container">
+          <ion-item>
+            <ion-input class="required_field" label="Name" placeholder="My Pingo" labelPlacement="fixed"
+              formControlName="name" required="true"></ion-input>
+          </ion-item>
+          <app-form-validation [control]="newPingoForm.get('name')"></app-form-validation>
+          <ion-item>
+            <ion-textarea maxlength="200" label="{{ 'description' | translate }}" placeholder="My Description" labelPlacement="fixed"
+              formControlName="descr" required="true" autoGrow="true">
+            </ion-textarea>
+          </ion-item>
+          <app-form-validation [control]="this.newPingoForm.get('descr')"></app-form-validation>
+          <ion-item>
+            <ion-label class="toggle-label">{{ 'visibility' | translate }}</ion-label>
+            <ion-toggle formControlName="isPublic">{{newPingoForm.get('isPublic')?.value ? ('public' | translate)  :
+              "privat"}}</ion-toggle>
+          </ion-item>
+          <ion-item>
+          <ion-label class="toggle-label">Chat</ion-label>
+          <ion-toggle formControlName="chat">{{newPingoForm.get('chat')?.value ? "aktiviert" :
+            "deaktiviert"}}</ion-toggle>
+        </ion-item>
+
+          <div class="mode-container">
+            <ion-label>
+              <h1>{{ 'mode' | translate }}</h1>
+            </ion-label>
+            <ion-radio-group formControlName="isSnitzel" (ionChange)="updateStationRanks($event)">
+
+              <ion-item lines="none">
+                <ion-radio labelPlacement="end" slot="start" aria-label="Schnitzeljagd"
+                  [value]="true">{{ 'hunt' | translate }}</ion-radio>
+              </ion-item>
+              <ion-item lines="none">
+                <ion-radio labelPlacement="end" slot="start" aria-label="Übersicht" [value]="false">{{ 'collection' | translate }}</ion-radio>
+              </ion-item>
+
+            </ion-radio-group>
+            <ion-item>
+            <div class="button-container">
+              <ion-button (click)="selectImage('gallery')" class="custom-button" language="de">Bild auswählen</ion-button>
+              <input id="imageInput" type="file" accept="image/*" style="display: none;" (change)="onImageInputChange($event)">
+              <ion-button (click)="selectImage('camera')" class="custom-button" language="de">
+                {{ showWebcam ? 'Kamera schließen' : 'Kamera öffnen' }}
+              </ion-button>
+            </div>
+            </ion-item>
+            <div class="webcam-container" *ngIf="showWebcam">
+              <webcam class="webcam-video" [trigger]="triggerObservable"
+              (imageCapture)="handleImage($event)"></webcam>
+              <ion-button (click)="captureImage()" class="custom-button">Bild aufnehmen</ion-button>
+            </div>
+            <div *ngIf="!showWebcam">
+              <img [src]="selectedImage || newPingoForm.get('media')?.value[0]?.url || './assets/img/placeholder.jpg'" alt="Image" class="pingo-image"/>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+      <!--------------  ### STATIONS TAB ### ------------->
+      <ng-container *ngIf="activeTab === 'stations'">
+        <div class="stations-container">
+          <ion-label *ngIf="!stations.value.length">{{ 'create.stations.no_stations' | translate }}</ion-label>
+          <ion-list>
+            <ion-reorder-group [disabled]="false" (ionItemReorder)="handleReorder($any($event))">
+              <ion-item-sliding *ngFor="let station of stations.value; let i=index">
+                <ion-item>
+                  <ion-label>
+                    <h1>{{ station.name }}</h1>
+                    <p>{{ station.lat }}, {{ station.lng }}</p>
+                  </ion-label>
+                  <ion-reorder slot="start"></ion-reorder>
+                  <ion-button slot="end" (click)="addStation(i)">
+                    <ion-icon icon-only icon="create-outline"></ion-icon>
+                  </ion-button>
+                </ion-item>
+                <ion-item-options side="end">
+                  <ion-item-option color="danger" (click)="removeStation(i)">{{ 'delete' | translate }}</ion-item-option>
+                </ion-item-options>
+              </ion-item-sliding>
+            </ion-reorder-group>
+          </ion-list>
+          <ion-button class="add-station-btn" expand="full" (click)="addStation()"><ion-icon
+              name="add-outline"></ion-icon></ion-button>
+        </div>
+      </ng-container>
+      <!--------------  ### Participants TAB ### ------------->
+      <ng-container *ngIf="activeTab === 'participants'">
+        <div class="ion-padding participants-container">
+          <ion-searchbar #searchbar animated="true" placeholder="Teilnehmer suchen" [debounce]="300"
+            (ionInput)="handleSearchInput($event)"></ion-searchbar>
+          <ion-list>
+            <ion-item *ngFor="let user of searchResult">
+              <ion-label>{{user.firstname}} {{user.lastname}}</ion-label>
+              <ion-button (click)="addUserToPingo(user)"><ion-icon name="add-outline"></ion-icon></ion-button>
+            </ion-item>
+          </ion-list>
+
+          <div class="user-container">
+            <h2>User</h2>
+            <h3 *ngIf="!participants.length || participants.length === 1 && participants[0].user.id === myUser?.id"
+              class="ion-padding">{{ 'create.members.no_members' | translate }}</h3>
+            <ion-accordion-group *ngIf="participants.length" class="accordion-grp-container ion-padding"
+              (ionChange)="accordionChange($event)" expand="compact">
+              <ng-container *ngFor="let participant of participants; let i = index">
+                <ion-item *ngIf="participant.user.id !== myUser?.id" class="accordion-container" lines="none">
+                  <ion-accordion [value]="participant.id">
+                    <ion-item slot="header" color="light" class="accordion-header">
+                      <ion-button (click)="removeUser(i)"><ion-icon name="trash-outline"></ion-icon></ion-button>
+                      <ion-label>{{ participant?.user?.firstname + " " + participant?.user?.lastname }}</ion-label>
+                    </ion-item>
+                    <div class="ion-padding accordion-content" slot="content">
+                      <ion-radio-group [value]="participant.role.name.toLowerCase()"
+                        (ionChange)="setUserRole($event, participant)">
+                        <ion-item>
+                          <ion-label>Editor</ion-label>
+                          <ion-radio slot="end" aria-label="editor" value="editor"></ion-radio>
+                        </ion-item>
+                        <ion-item>
+                          <ion-label>{{ 'create.members.title' | translate }}</ion-label>
+                          <ion-radio slot="end" aria-label="viewer" value="viewer"></ion-radio>
+                        </ion-item>
+                      </ion-radio-group>
+                    </div>
+                  </ion-accordion>
+                </ion-item>
+              </ng-container>
+            </ion-accordion-group>
+          </div>
+
+          <div class="share-container">
+            <h2>Teilen</h2>
+            <ion-list *ngIf="hashes?.value && hashes.value.length">
+              <ion-radio-group [value]="hashes.value[0].id" (ionChange)="choseHash($event)">
+                <ion-item lines="none" *ngFor="let hash of hashes.value">
+                  <ion-radio labelPlacement="end" slot="start" aria-label="hash.role.name"
+                    [value]="hash.id">{{getRoleTranslation(hash.role.name)}}</ion-radio>
+                  <ion-label class="hash-expireDate">bis {{getFormattedDate(hash.expireDate)}}</ion-label>
+                  <ion-button (click)="copyLink(hash)">
+                    <ion-icon name="clipboard-outline" color="light"></ion-icon>
+                  </ion-button>
+                  <ion-button (click)="deleteLink(hash)" color="danger">
+                    <ion-icon name="trash-outline"></ion-icon>
+                  </ion-button>
+                </ion-item>
+              </ion-radio-group>
+            </ion-list>
+            <ion-toolbar class="flex">
+              <ion-buttons class="justify-center">
+                <ion-button [disabled]="!isFormSaved" (click)="getShareLink()" slot="center" class="share-button">
+                  <ion-icon name="share-social-outline" color="light"></ion-icon>
+                </ion-button>
+                <ion-button [disabled]="!isFormSaved || chosenHashLink === ''" (click)="qrLink()" class="share-button">
+                  <ion-icon name="qr-code-outline" color="light"></ion-icon>
+                </ion-button>
+              </ion-buttons>
+            </ion-toolbar>
+            <div class="error ion-padding" *ngIf="!isFormSaved">{{ 'create.valid' | translate }}</div>
+  
+            <div class="share-img-container">
+              <img class="qr-image" *ngIf="qrImageSrc" [src]="qrImageSrc">
+            </div>
+          </div>
+          </div>
+      </ng-container>
+    </form>
+  </div>
+</ion-content>
+
+<ion-footer>
+  <ion-buttons class="footer-navigation">
+    <ion-tab-button class="footer-navigation-button" [class]="{'tab-selected': activeTab === 'general'}"
+      (click)="activeTab = 'general'"> {{ 'create.overview.title' | translate }}</ion-tab-button>
+    <ion-tab-button class="footer-navigation-button" [class]="{'tab-selected': activeTab === 'stations'}"
+      (click)="activeTab = 'stations'">{{ 'create.stations.title' | translate }}</ion-tab-button>
+    <ion-tab-button class="footer-navigation-button" [class]="{'tab-selected': activeTab === 'participants'}"
+      (click)="activeTab = 'participants'">{{ 'create.members.title' | translate }}</ion-tab-button>
+  </ion-buttons>
+</ion-footer>

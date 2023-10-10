@@ -1,0 +1,51 @@
+<ion-header [translucent]="true" >
+  <ion-toolbar>
+    <ion-button *ngIf="joinedChat" slot="start" fill="clear" class="ion-no-margin" (click)="leaveRoom()">
+      <ion-icon name="arrow-back-outline" ></ion-icon>
+    </ion-button>
+    <h1 class="ion-text-start" *ngIf="pingo">{{pingo.name}}</h1>
+    </ion-toolbar>
+
+</ion-header>
+
+<ion-content [fullscreen]="true" scrollY="false">
+
+  <ion-fab *ngIf="!joinedChat && isAuthenticated && chat" vertical="top" horizontal="start" id="chatButton">
+    <ion-fab-button (click)="joinRoom()">
+      <ion-icon name="chatbubbles-outline"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+
+
+
+  <app-chat *ngIf="joinedChat" [roomId]="this.pingo.id!"></app-chat>
+
+  <app-map *ngIf="!joinedChat" #leafletMap (toggleList)="toggleList()" (nextStation)="nextStation($event)" [id]="'pingo-detail-map'" [pingo]="pingo" [stationsToDisplay]="displayedStations" [isPreview]="false"></app-map>
+
+  <ion-modal #stationList *ngIf="pingo && !joinedChat" [backdropDismiss]="false" [isOpen]="true" [canDismiss]="false"
+    [backdropBreakpoint]="0.75" [initialBreakpoint]="0.1" [breakpoints]="[0.1, 0.5, 0.75]"> <ion-content
+      class="ion-padding">
+      <div class="modal-list-content ion-padding">
+        <ng-container *ngIf="pingo && displayedStations.length" >
+          <ion-list>
+            <ion-item class="stationListHeader">
+              <ion-text color="dark">Stationen:</ion-text>
+              <ion-button slot="end" (click)="showAllStations()">Zeige alle Stationen</ion-button>
+            </ion-item>
+            <ion-item *ngFor="let station of displayedStations" (click)="onListClick(station)" >
+              <ion-label>
+                {{ station.name }}
+              </ion-label>
+              <ion-button slot="end" color="secondary">GO!</ion-button>
+            </ion-item>
+          </ion-list>
+        </ng-container>
+
+      </div>
+
+    </ion-content>
+
+  </ion-modal>
+
+</ion-content>
+

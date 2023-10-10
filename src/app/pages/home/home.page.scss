@@ -1,0 +1,165 @@
+@use "../../../theme/custom_variables.scss" as *;
+
+
+.image-container {
+  position: absolute;
+  bottom:0;
+  left: 0;
+  z-index: -1;
+  width:100%;
+  display: flex;
+  justify-content: center;
+
+  img{
+    opacity: 0.5;
+  }
+}
+
+
+
+
+
+
+.pingoCard{
+  padding-top: 1em; 
+  padding-bottom: 1em; 
+  text-align: center; 
+  margin-bottom: 0.5em; 
+  margin-top: 0.5em; 
+}
+
+ion-content{
+  background-image: '../../../assets/img/intro_2.gif';
+}
+
+h1, h2, h3{
+  font-size: $font-size-md;
+  margin: 0;
+}
+h1{
+  background-color: var(--ion-color-primary);
+  color: #fff;
+}
+
+//card for no pingos
+.no-pingo-card{
+  box-sizing: border-box;
+  padding: 12px;
+  h2{
+    display: flex;
+    font-weight: 700;
+    justify-content: space-between;
+    .emoji{
+      font-size: 30px;
+    }
+  }
+  p{
+    margin-bottom: 0;
+  }
+}
+
+//accordion 
+ion-accordion-group{
+ 
+  width: 100%;
+  
+
+  ion-accordion {
+    margin: 0 auto;
+
+    ion-icon {
+      font-size: 40px;
+      color: var(--ion-color-secondary);
+  }
+
+
+    //map 
+    app-map{
+      display: block;
+      height: 40vh;
+    }
+
+    //description
+    .pingo-infos{
+      h3{
+        font-size: $font-size-sm;
+        color: var(--ion-color-primary);
+        margin: 0;
+      }
+      p{
+        font-size: $font-size-md;
+        margin: 0 0 12px 0;
+        &:last-of-type{
+          margin-bottom: 0;
+        }
+      }
+      .pingo-type{
+        display: flex;
+        align-items: center;
+        ion-icon{
+          font-size: 22px;
+          margin-left: 4px;
+        }
+      }
+      .pingo-image {
+        float: right;
+        width: 50vw;
+        height: 20vh;
+        margin-left: 10px;
+        border: 1px solid #ccc; /* Add a light border */
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
+        border-radius: 5px; /* Add rounded corners */
+      }
+
+    }
+
+    //enter button
+    .btn-enter-pingo{
+      background-color: var(--ion-color-secondary);
+      color: #fff;
+      height: 48px;
+    }
+  }
+  
+}
+//style for active accordion
+ion-accordion.accordion-collapsing ion-item[slot='header'],
+ion-accordion.accordion-collapsed ion-item[slot='header'] {
+  --background: var(--ion-color-light);
+  --color: var(--ion-color-light-contrast);
+}
+ion-accordion.accordion-expanding ion-item[slot='header'],
+ion-accordion.accordion-expanded ion-item[slot='header'] {
+  --background: var(--ion-color-light); 
+  --color: var(--ion-color-light-contrast);
+}
+
+//tooltip popover
+ion-popover{
+  
+  ion-header{
+    padding: 12px;
+    h2{
+      font-weight: 700;
+    }
+  }
+
+  .contentWrapper{
+    padding: 0 12px 12px;
+    h3{
+      font-size: $font-size-md;
+      color: var(--ion-color-primary);
+      margin: 12px 0 4px;
+
+    }
+    p{
+      font-size: $font-size-sm;
+      margin: 0;
+      line-height: $font-size-sm * 1.2;
+    }
+  }
+
+ 
+ 
+}
+

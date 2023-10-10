@@ -1,0 +1,16 @@
+
+
+<ion-content [fullscreen]="true">
+  <div class="container">
+    <h1 class="ion-padding ion-text-center">Scan to join a Pingo!</h1>
+    <div *ngIf="isScanning" id="qrscanner"></div>
+    <ion-button *ngIf="!isScanning" color="dark" class="scan-btn" (click)="startScan()">
+      <ion-icon slot="start" icon="qr-code-outline"></ion-icon>
+      <ion-label>Scan QR Code</ion-label>
+    </ion-button>
+    <ion-button *ngIf="isScanning" color="dark" class="scan-btn" (click)="stopScan()">
+      <ion-icon slot="start" icon="qr-code-outline"></ion-icon>
+      <ion-label>Stop Scan</ion-label>
+    </ion-button>
+  </div>
+</ion-content>

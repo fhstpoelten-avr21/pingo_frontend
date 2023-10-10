@@ -1,0 +1,108 @@
+{
+  "done": "Fertig",
+  "mode": "Modus",
+  "update": "Aktualisiere",
+  "refresh_text": "Zum Aktualisieren herunterziehen...",
+  "homepage": "Startseite",
+  "skip": "Überspringen",
+  "register": "Registrieren",
+  "delete": "löschen",
+  "collection": "Sammlung",
+  "stations": "Stationen",
+  "public": "öffentlich",
+  "visibility": "Sichtbarkeit",
+  "description": "Beschreibung",
+  "login": "Login",
+  "password": "Passwort",
+  "confirm_password": "Passwort bestätigen",
+  "lastname": "Nachname",
+  "firstname": "Vorname",
+  "email": "Email",
+  "username": "Username",
+  "hunt": "Schnitzeljagd",
+  "qr": "QR Code",
+  "ready": "Ready",
+  "or": "oder",
+  "load_pingos": "Lade Pingos",
+  "no_pingos_found_headline": "Keine Pingos in deiner Nähe gefunden.",
+  "no_pingos_found_text": "Deine Region hat besondere Orte, die du mit anderen teilen möchtest? Melde dich einfach an und teile sie.",
+  "no_account": "Du hast noch keinen Account? ",
+  "account_exists": "Du hast bereits einen Account?",
+  "register_now": "Jetzt Registrieren",
+  "authorization": "Berechtigung",
+  "edit": "Editieren",
+  "types": "Typen",
+  "discover": "entdecken",
+  "home": {
+    "offline": "Offline Modus",
+    "offline_text": "Deine Verbindung scheint schlecht zu sein. Versuche es erneut oder stelle eine bessere Internet-Verbindung her.",
+    "no_gps_title": "GPS deaktiviert",
+    "no_gps_text": "Bitte erlaube den Zugriff auf deinen Standort, um Pingos in deiner Nähe zu finden. Zum Aktualisieren runterziehen...",
+    "pingos_near_you": "Pingos in deiner Nähe",
+    "info": {
+      "collection": "Sammlung",
+      "collection_text_1": "Alle Highligts auf einen Blick!",
+      "collection_text_2": "Alle Stationen werden auf einmal angezeigt. Es ist keine genaue Route vorgegeben.",
+      "treasure_hunt": "Schnitzeljagd",
+      "treasure_hunt_text_1": "Spannende Abenteuerreise",
+      "treasure_hunt_text_2": "Die nächste Station wird erst angezeigt, wenn eine Quizfrage bei der aktuellen Station beantwortet wurde."
+    }
+  },
+  "profile": {
+    "title": "Profil",
+    "no_pingos": "Du hast noch keine Pingos",
+    "no_stations": "Du bist zu keinen Stationen zugewiesen"
+  },
+  "validation": {
+    "default": "Dieses Feld muss ausgefüllt und korrekt sein.",
+    "required": "Dieses Feld ist verpflichtend.",
+    "minlength": "Die minimum Länge ist {validationRequirement} Zeichen.",
+    "max": "Das maximum ist {validationRequirement} Zeichen.",
+    "min": "Das minimum ist {validationRequirement} Zeichen.",
+    "pattern": "Die eingegebene Email muss zulässig sein.",
+    "user_exists": "Username existiert bereits.",
+    "password_mismatch": "Die Passwörter stimmen nicht überein."
+  },
+  "create": {
+    "valid": "Bitte stelle zuerst sicher, dass dein Pingo vollständig und valide ist!",
+    "overview": {
+      "title": "Übersicht",
+      "invite": "{{lang}}"
+    },
+    "stations": {
+      "title": "Stationen",
+      "no_stations": "Keine Station hinzugefügt"
+    },
+    "members": {
+      "title": "Teilnehmer",
+      "no_members": "Keine Teilnehmer hinzugefügt"
+    }
+  },
+  "tab1": {
+    "tabName": "Übersicht",
+    "invite": "{{lang}}"
+  },
+  "tour": {
+    "title": "Tutorial",
+    "welcome": "Willkommen",
+    "welcome_text_1": "Schön, dass du da bist!",
+    "welcome_text_2": "Mit dieser App kannst du spannende Touren aller Art konzipieren. Wir zeigen dir hier wie.",
+    "description": "Ein PinGo ist eine Kollektion von Standorten, <br>die inhaltlich zusammenhängen.<br><br> Erstelle z.B. einen Reiseführer mit einer <b>Sammlung</b> von Stadt-Highlights. <br><br> Oder konzipiere für deine Freunde eine <b>Schnitzeljagd</b> durch die Natur.",
+    "navigation_text": "Auf der <b>Homepage</b> siehst du alle derzeit verfügbaren PinGos in deiner Nähe.<br><br> Im <b>Profil</b> oben rechts, kannst du dir einen Account erstellen. Anschließend ist es dir möglich, eigene PinGos zu erstellen.",
+    "stations_text": "Ein PinGo besteht aus mehreren Standorten. Du kannst jederzeit neue <b>Stationen</b> hinzufügen.<br><br> Einen Ort kannst du entweder durch die direkte Eingabe von Koordinaten anlegen, oder du verschiebst den <b>PIN</b> direkt auf der Karte <b>mit deinem Finger</b>.",
+    "visibility_text": "Stelle die Sichtbarkeit auf <b>privat</b> und <b>teile</b> dein PinGo anschließend über einen <b>Link</b>, <b>QR-Code</b> oder direkt mit einem User.<br><br> Oder du stellst die Sichtbarkeit auf <b>öffentlich</b> und teilst deine Touren mit der ganzen Welt!",
+    "treasure_hunt": "Bei einer Schnitzeljagd ist die <b>Reihenfolge</b> der Stationen wichtig. Du kannst sie per Drag and Drop anordnen.<br><br> Anschließend kannst du dir noch eine <b>Frage</b> überlegen. Die Station wird dann erst mit Eingabe der korrekten <b>Antwort</b> sichtbar.",
+    "creativity_text": "Deiner Kreativität sind keine Grenzen gesetzt. <br>Los gehts!",
+    "start_tour": "Tour starten",
+    "lets_go_text": " <b>PIN</b>&nbsp;setzen&nbsp;und&nbsp;<b>GO</b>",
+    "step_1": "Hier erreichst du alle wichtigen Funktionen.",
+    "step_2": "Mit Klick auf das Logo, siehst du alle PinGos, in deiner Nähe.",
+    "step_welcome": "Mit einem Klick erreichst du erneut die Einführung.",
+    "step_qr": "Öffne ein bestehendes PinGo indem du einen QR Code scannst.",
+    "step_profile_create": "Hier kannst du jederzeit deine eigenen PinGos erstellen und verwalten.",
+    "step_profile": "Verwalte hier deine Profildaten."
+  },
+  "chat": {
+    "no_messages": "Keine Nachrichten vorhanden"
+  }
+}

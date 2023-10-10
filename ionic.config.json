@@ -1,0 +1,7 @@
+{
+  "name": "pingo_frontend_angular",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

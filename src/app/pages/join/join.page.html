@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-toolbar>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <!-- if hash routes to a Pingo -->
+  <ion-card *ngIf="hashIsPingo">
+    <div class="map-container">
+      <app-map [pingo]="pingo" class="map-background"></app-map>
+      <div class="map-overlay">
+        <div class="overlay">
+          <p class="overlay-text" >Du wurdest Eingeladen für:</p>
+          <h2 class="overlay-text">{{ pingo.name }}</h2>
+         
+        </div>
+      </div>
+    </div>
+    <p class="overlay-text">{{ pingo.descr }}</p>
+    <ion-button (click)="joinPingo(pingo)" expand="block">Pingo beitreten</ion-button>
+  </ion-card>
+
+  <!-- if hash routes to a Station -->
+  <ion-card *ngIf="hashIsStation">
+    <div class="map-container">
+      <app-map [pingo]="pingo" class="map-background"></app-map>
+      <div class="map-overlay">
+        <div class="overlay">
+          <p class="overlay-text" >Du wurdest zur Station eingeladen:</p>
+          <h2 class="overlay-text">{{ station.name }}</h2>    
+          <!-- <p class="overlay-text" >{{ pingo.name }}</p> -->
+
+        </div>
+      </div>
+    </div>
+    
+    <ion-button (click)="joinStation(station)" expand="block">station beitreten</ion-button>
+  </ion-card>
+
+  <!-- if hash routes to nothing , create card with centered content -->
+  <ion-card *ngIf="!hashIsPingo && !hashIsStation">
+    <!-- centere content -->
+    <div class="map-container">
+      <img src="assets/icon/error.svg" alt="invalid" class="map-background">
+      <div class="map-overlay">
+        <div class="overlay">
+          <h2 class="overlay-text">Ungültiger Link</h2>
+          <p class="overlay-text">Der Link ist ungültig oder abgelaufen.</p>
+         
+        </div>
+      </div>
+    </div>
+    <!-- creta -->
+
+    <ion-button (click)="goHome()" expand="block">Zur Übersicht</ion-button>
+  </ion-card>
+
+
+</ion-content>

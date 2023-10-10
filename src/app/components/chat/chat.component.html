@@ -1,0 +1,72 @@
+<ion-content class="ion-padding inverted-scrollbar" #contentEl>
+  <div #messagesContainer>
+
+
+    <div *ngIf="messages.length == 0" slot="center" class="ion-text-center">
+      <ion-label class="ion-text-wrap" slot="start" color="primary">
+        <h2>{{ 'chat.no_messages' | translate }}</h2>
+      </ion-label>
+    </div>
+
+    <ng-container *ngFor="let message of messages; let i = index">
+
+
+      <div *ngIf="isDateChanged(i)" class="message-date">
+        <ion-icon name="calendar-outline"></ion-icon>
+        {{ message.createdAt | date:'dd MMM yyyy' }}
+      </div>
+  
+      <ion-item class="message-container">      
+        <ion-label class="ion-text-wrap" slot="start">
+          <h2>{{ message.message }}</h2>
+
+
+        </ion-label>
+        
+        <ion-label class="ion-text-wrap" slot="end"> 
+          <div class="message">
+            <p>{{ message.createdAt | date:'HH:mm' }}</p>
+            <div class="message-sender">
+              <ion-icon name="person-circle-outline"></ion-icon>
+              <p>{{ message.sender }}</p>
+            </div>
+          </div>  
+
+        </ion-label>
+      </ion-item>
+    </ng-container>
+
+  
+  </div>
+
+  <ion-item class="message-input" *ngIf="!station">
+    <form (ngSubmit)="sendMessage(messageField)" [formGroup]="messageForm" novalidate novalidate>
+      <ion-input [(ngModel)]="messageField" placeholder="Nachricht" formControlName="messageText" type="text" required></ion-input>
+      <ion-button type="submit" fill="clear" [disabled]="!messageForm.valid" slot="end" color="primary"nk>
+      <ion-icon name="send-outline" slot="icon-only"></ion-icon>
+
+      </ion-button>
+    </form>
+    <!--
+    <ion-input [(ngModel)]="messageText" placeholder="Nachricht"></ion-input>
+    <ion-button (click)="sendMessage(messageText)">Senden</ion-button>-->
+  </ion-item>
+
+  <ion-item class="message-input-station" *ngIf="station">
+    <form (ngSubmit)="sendMessage(messageField)" [formGroup]="messageForm" novalidate novalidate>
+      <ion-input [(ngModel)]="messageField" placeholder="Nachricht" formControlName="messageText" type="text" required></ion-input>
+      <ion-button type="submit" fill="clear" [disabled]="!messageForm.valid" slot="end" color="primary"nk>
+      <ion-icon name="send-outline" slot="icon-only"></ion-icon>
+
+      </ion-button>
+    </form>
+    <!--
+    <ion-input [(ngModel)]="messageText" placeholder="Nachricht"></ion-input>
+    <ion-button (click)="sendMessage(messageText)">Senden</ion-button>-->
+  </ion-item>
+
+</ion-content>
+
+
+
+
