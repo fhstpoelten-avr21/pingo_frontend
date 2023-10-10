@@ -5,7 +5,7 @@
 # pinGo
 
 ## Description
-Create and customize Location Based Services (LBS).
+Create and customize Location Based Services (LBS)
 
 ## Tech Stack
 
