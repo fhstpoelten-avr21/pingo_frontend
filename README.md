@@ -37,8 +37,6 @@ ionic serve
   <img src="src/assets/img/pingo_screenshot_2.png" width="300" alt="screenshot_2"/>
   <img src="src/assets/img/pingo_screenshot_3.png" width="300" alt="screenshot_3"/>
   <img src="src/assets/img/pingo_screenshot_4.png" width="300" alt="screenshot_4"/>
-</p>
-<p float="left">
   <img src="src/assets/img/pingo_screenshot_5.png" width="300" alt="screenshot_5"/>
   <img src="src/assets/img/pingo_screenshot_6.png" width="300" alt="screenshot_6"/>
   <img src="src/assets/img/pingo_screenshot_7.png" width="300" alt="screenshot_7"/>
