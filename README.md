@@ -31,6 +31,16 @@ yarn
 ionic serve
 ```
 
+## Screenshots
+<img src="src/assets/img/pingo_screenshot_1.png" width="800" alt="screenshot_1"/>
+<img src="src/assets/img/pingo_screenshot_2.png" width="800" alt="screenshot_2"/>
+<img src="src/assets/img/pingo_screenshot_3.png" width="800" alt="screenshot_3"/>
+<img src="src/assets/img/pingo_screenshot_4.png" width="800" alt="screenshot_4"/>
+<img src="src/assets/img/pingo_screenshot_5.png" width="800" alt="screenshot_5"/>
+<img src="src/assets/img/pingo_screenshot_6.png" width="800" alt="screenshot_6"/>
+<img src="src/assets/img/pingo_screenshot_7.png" width="800" alt="screenshot_7"/>
+<img src="src/assets/img/pingo_screenshot_8.png" width="800" alt="screenshot_8"/>
+
 ## Publish to Android
 We will use [Android Studio](https://developer.android.com/studio) as build tool. That installs all necessary SDKs to your machine. 
 
