@@ -5,7 +5,7 @@
 # pinGo
 
 ## Description
-Create and customize Location Based Services (LBS)
+PinGo is an Web-App to create Location Based Tours with different stations.
 
 ## Tech Stack
 
@@ -30,6 +30,12 @@ yarn
 # Build the application and start a webserver
 ionic serve
 ```
+
+## Video
+Check out a screen recording of the web app:
+<br>
+[![Watch the video](https://img.icons8.com/color/48/000000/video.png)](https://vimeo.com/1012399484?share=copy)
+
 
 ## Screenshots
 <p float="left">
